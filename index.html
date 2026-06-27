@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ilia Danilin — Economics PhD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F8F7F4;
+      --ink:       #1C1C1E;
+      --ink-soft:  #5A5A5F;
+      --accent:    #2D6A4F;
+      --accent-lt: #D8EBE2;
+      --rule:      #DDDBD5;
+      --max:       720px;
+      --serif:     'Playfair Display', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 0 1.5rem;
+    }
+
+    /* ── LAYOUT ── */
+    .site-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 3.5rem 0 2rem;
+      border-bottom: 1.5px solid var(--rule);
+      margin-bottom: 3rem;
+    }
+
+    .header-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 6vw, 3rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      max-width: 540px;
+      margin-bottom: 1.6rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    p { color: var(--ink-soft); margin-bottom: 0.9rem; font-weight: 300; }
+    p strong { color: var(--ink); font-weight: 500; }
+
+    /* ── RESEARCH CARD ── */
+    .research-card {
+      background: var(--accent-lt);
+      border-left: 3px solid var(--accent);
+      padding: 1.4rem 1.6rem;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .research-card h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .research-card .meta {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .research-card p { margin-bottom: 0; font-size: 0.92rem; }
+
+    /* ── INTERESTS ── */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      padding: 0.25rem 0.65rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CV TABLE ── */
+    .cv-list { list-style: none; }
+
+    .cv-list li {
+      display: grid;
+      grid-template-columns: 6.5rem 1fr;
+      gap: 0 1.2rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem;
+    }
+
+    .cv-list li:last-child { border-bottom: none; }
+
+    .cv-year {
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      font-weight: 400;
+      padding-top: 0.05rem;
+    }
+
+    .cv-item strong { color: var(--ink); font-weight: 500; display: block; }
+    .cv-item span { color: var(--ink-soft); font-size: 0.85rem; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-grid a {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .contact-grid a:hover { color: var(--accent); }
+
+    .contact-grid a::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.8rem 0 3rem;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .cv-list li { grid-template-columns: 1fr; gap: 0.1rem; }
+      .cv-year { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="site-wrap">
+
+  <!-- HEADER -->
+  <header id="top">
+    <p class="header-label">PhD Student in Economics · EUSP</p>
+    <h1>Ilia Danilin</h1>
+    <p class="tagline">
+      Research interests: Industrial Organisation, Environmental Economics, Innovation Economics.
+      Currently developing a theoretical model of green innovation and competition under environmental regulation.
+    </p>
+    <nav>
+      <a href="#research">Research</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <p>
+      I am a PhD student in Economics at the <strong>European University at St. Petersburg (EUSP)</strong>.
+      My work sits at the intersection of environmental economics, industrial organisation, and game theory,
+      with a focus on how market structure and information shape the effectiveness of environmental policy.
+    </p>
+    <p>
+      Before the PhD, I earned an <strong>MA in Philosophy</strong> (GPA 5.0/5.0) at EUSP and a
+      <strong>BA in Political Science</strong> at Saint Petersburg State University.
+      I am currently completing an <strong>MSc in Data Analytics</strong> at HSE University (top 7% of cohort).
+    </p>
+    <div class="interests">
+      <span class="tag">Environmental Economics</span>
+      <span class="tag">Industrial Organisation</span>
+      <span class="tag">Game Theory</span>
+      <span class="tag">Information Economics</span>
+      <span class="tag">Oligopoly Theory</span>
+      <span class="tag">Green R&amp;D</span>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <p class="section-label">Research</p>
+
+    <div class="research-card">
+      <p class="meta">Working Paper · PhD Project</p>
+      <h3>Market Structure, Emission Tax, and R&amp;D Incentives: Cournot Oligopoly</h3>
+      <p>
+        A game-theoretic model of optimal emission taxation under imperfect competition.
+        Competition is measured through product substitutability — a fundamental demand parameter —
+        rather than the number of firms. Abatement technology generates <em>spatial spillovers</em>:
+        a firm's investment in cleaner production also reduces emissions from co-located neighbours.
+        Motivated by the policy context of eco-industrial parks in Russia.
+      </p>
+    </div>
+
+    <div class="research-card">
+      <p class="meta">MSc Thesis · 2025</p>
+      <h3>Evaluating the 2016 Russian Environmental Policy Reform</h3>
+      <p>
+        An empirical study assessing the causal effect of Russia's 2016 environmental policy reform
+        using panel data methods and quasi-experimental identification strategies.
+      </p>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <p class="section-label">CV</p>
+    <h2>Education</h2>
+    <ul class="cv-list">
+      <li>
+        <span class="cv-year">Enrolled</span>
+        <div class="cv-item">
+          <strong>PhD in Economics — European University at St. Petersburg</strong>
+          <span>Environmental economics, industrial organisation, microeconomic theory</span>
+        </div>
+      </li>
+      <li>
+        <span class="cv-year">2024–2026</span>
+        <div class="cv-item">
+          <strong>MSc in Data Analytics — HSE University, St. Petersburg</strong>
+          <span>Machine Learning &amp; Data Analysis · Top 7% of cohort</span>
+        </div>
+      </li>
+      <li>
+        <span class="cv-year">2025</span>
+        <div class="cv-item">
+          <strong>MA in Philosophy — European University at St. Petersburg</strong>
+          <span>Republican and Political Theories · GPA 5.00 / 5.00</span>
+        </div>
+      </li>
+      <li>
+        <span class="cv-year">2022</span>
+        <div class="cv-item">
+          <strong>BA in Political Science — Saint Petersburg State University</strong>
+          <span>GPA 4.58 / 5.00</span>
+        </div>
+      </li>
+    </ul>
+
+    <h2 style="margin-top:2rem;">Skills</h2>
+    <ul class="cv-list">
+      <li>
+        <span class="cv-year">Programming</span>
+        <div class="cv-item">
+          <span>Python (NumPy, Pandas, scikit-learn), R, SQL (PostgreSQL), Linux Shell</span>
+        </div>
+      </li>
+      <li>
+        <span class="cv-year">Tools</span>
+        <div class="cv-item">
+          <span>LaTeX, Git, Jupyter Notebook</span>
+        </div>
+      </li>
+      <li>
+        <span class="cv-year">Languages</span>
+        <div class="cv-item">
+          <span>Russian (native) · English (B2) · German (A2)</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <p>Feel free to reach out regarding research, seminars, or collaboration.</p>
+    <div class="contact-grid">
+      <a href="mailto:your@email.com">your@email.com</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener">github.com/yourusername</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ilia Danilin · European University at St. Petersburg · Updated June 2025</span>
+  </footer>
+
+</div>
+</body>
+</html>
